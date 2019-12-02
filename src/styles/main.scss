@@ -1,0 +1,131 @@
+.text-center {
+	text-align: center;
+}
+
+.float-right {
+	float: right;
+}
+
+
+.r-container {
+	min-height: 100%;
+	padding: 20px;
+	background: #fff;
+	/deep/ .el-card__header {
+		padding: 10px 20px;
+		line-height: 40px;
+	}
+}
+
+/* 常用样式 */
+.default-form {
+	width: 1000px;
+	margin: auto;
+	font-size: 0;
+
+	.form-title {
+		font-size: 20px;
+		margin: 20px 0;
+	}
+
+	.el-form-item__content {
+		width: 320px;
+		max-width: 100%;
+		input {
+			height: 34px;
+			line-height: 34px;
+		}
+	}
+
+	.el-form-item.col-1 {
+		width: 100%;
+
+		.el-form-item__content {
+			width: 820px;
+			.el-select{
+				width:100%;
+			}
+		}
+	}
+
+	.el-form-item.col-2 {
+		width: 50%;
+		margin-right: 0;
+
+		.el-form-item__content {
+			width: 320px;
+			.el-input,
+			.el-select {
+				width: 100%;
+			}
+		}
+	}
+
+	.el-form-item.col-3 {
+		width: 33.3%;
+		margin-right: 0;
+		.el-form-item__content {
+			width: auto;
+		}
+	}
+
+	.el-input.is-active .el-input__inner,
+	.el-input__inner:focus {
+		background-color: #EBFFFD;
+	}
+}
+
+.default-table {
+	table {
+		thead {
+			tr {
+				th {
+					background-color: #e8f8f3;
+					color: #333;
+					text-align: center;
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				td {
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+
+.default-dialog {
+	.el-dialog {
+		overflow: hidden;
+		border-radius: 6px;
+		.el-dialog__header {
+			background-color: #67d5cd;
+			.el-dialog__title {
+				color: #fff;
+			}
+			.el-dialog__headerbtn {
+				.el-dialog__close {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+/*常用动画*/
+.slide-fade-enter-active {
+	transition: all .4s ease;
+}
+
+.slide-fade-leave-active {
+	transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+	transform: translateX(15px);
+	opacity: 0;
+}

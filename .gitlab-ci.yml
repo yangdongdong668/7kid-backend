@@ -1,0 +1,37 @@
+stages:
+ - build
+ - install
+
+build:
+  image: 47.97.82.62:8888/base/node:12.10.0
+  stage: build
+  script:
+    - date
+    - npm install -g cnpm --registry=https://registry.npm.taobao.org
+    - cnpm install -g @vue/cli@3.11.0
+    - cnpm install
+    - cnpm run build:prod
+    - tar -czvf dist.tar.gz dist/
+  tags:
+    - java
+  artifacts:
+    paths:
+      - dist.tar.gz
+
+job1:
+  image: docker:stable
+  stage: install
+  dependencies:
+    - build
+  services:
+    - docker:dind
+  tags:
+    - java
+  before_script:
+    - docker info
+  script:
+    - tar -zxvf dist.tar.gz
+    - docker build -t 47.97.82.62:8888/web/7kid_manager:$CI_COMMIT_REF_NAME .
+    - docker login --username=au1 -p Au1password 47.97.82.62:8888
+    - docker push 47.97.82.62:8888/web/7kid_manager:$CI_COMMIT_REF_NAME
+    - docker rmi 47.97.82.62:8888/web/7kid_manager:$CI_COMMIT_REF_NAME
